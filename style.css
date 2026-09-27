@@ -1,0 +1,676 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+/* =========================
+   QUESTION SCREEN
+========================= */
+
+.page {
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #ffb2c0;
+
+    padding: 20px;
+}
+
+.card {
+    width: min(390px, 92vw);
+    min-height: 500px;
+
+    padding: 45px 25px 30px;
+
+    background: #fffafb;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 40px rgba(80, 20, 40, 0.2);
+}
+
+h1 {
+    margin: 0 0 20px;
+
+    color: #5a172b;
+
+    font-family: "Comic Sans MS", cursive;
+
+    font-size: clamp(2rem, 8vw, 3rem);
+}
+
+
+/* =========================
+   CUTE CHARACTER
+========================= */
+
+.character {
+    width: 150px;
+    height: 190px;
+
+    margin: 0 auto 10px;
+
+    position: relative;
+}
+
+.flower {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #777;
+
+    font-size: 28px;
+
+    z-index: 3;
+}
+
+.head {
+    position: absolute;
+
+    top: 28px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 105px;
+    height: 92px;
+
+    background: white;
+
+    border: 3px solid #777;
+
+    border-radius: 48% 48% 45% 45%;
+
+    z-index: 2;
+}
+
+.eye {
+    position: absolute;
+
+    top: 24px;
+
+    width: 29px;
+    height: 36px;
+
+    background: #51434a;
+
+    border-radius: 50%;
+}
+
+.eye::after {
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+    height: 11px;
+
+    top: 5px;
+    left: 6px;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+.eye.left {
+    left: 18px;
+}
+
+.eye.right {
+    right: 18px;
+}
+
+.blush {
+    position: absolute;
+
+    top: 59px;
+
+    width: 18px;
+    height: 8px;
+
+    background: #ffb5c2;
+
+    border-radius: 50%;
+}
+
+.left-blush {
+    left: 10px;
+}
+
+.right-blush {
+    right: 10px;
+}
+
+.mouth {
+    position: absolute;
+
+    left: 50%;
+    bottom: 9px;
+
+    transform: translateX(-50%);
+
+    color: #51434a;
+
+    font-size: 21px;
+}
+
+.body {
+    position: absolute;
+
+    top: 112px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 58px;
+    height: 58px;
+
+    background: #ff9bb0;
+
+    border: 3px solid #777;
+
+    border-radius: 45% 45% 50% 50%;
+
+    z-index: 1;
+}
+
+.heart {
+    color: white;
+
+    text-align: center;
+
+    font-size: 28px;
+
+    line-height: 52px;
+}
+
+.arm {
+    position: absolute;
+
+    top: 130px;
+
+    width: 38px;
+    height: 10px;
+
+    background: white;
+
+    border: 3px solid #777;
+
+    border-radius: 20px;
+
+    z-index: 0;
+}
+
+.left-arm {
+    left: 25px;
+
+    transform: rotate(28deg);
+}
+
+.right-arm {
+    right: 25px;
+
+    transform: rotate(-28deg);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    min-height: 75px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+}
+
+button {
+    border: none;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.yes-btn {
+    min-width: 90px;
+
+    padding: 16px 28px;
+
+    border-radius: 999px;
+
+    background: #20bf72;
+
+    font-size: 18px;
+
+    z-index: 1000;
+
+    transition: transform 0.3s ease;
+}
+
+.no-btn {
+    min-width: 155px;
+
+    padding: 14px 22px;
+
+    border-radius: 999px;
+
+    background: #e52d55;
+
+    font-size: 14px;
+
+    z-index: 1100;
+
+    transition:
+        left 0.35s ease,
+        top 0.35s ease,
+        opacity 0.3s ease;
+}
+
+.no-btn.moving {
+    position: fixed;
+
+    margin: 0;
+
+    transform: translate(-50%, -50%);
+}
+
+#message {
+    min-height: 24px;
+
+    color: #8b3850;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   FULL-SCREEN YES
+========================= */
+
+.yes-btn.growing {
+    position: fixed !important;
+
+    left: 50% !important;
+    top: 50% !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: translate(-50%, -50%) !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 0 !important;
+
+    font-size: clamp(3rem, 15vw, 9rem) !important;
+
+    z-index: 9999 !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================
+   FINAL SCREEN
+========================= */
+
+.final-screen {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: #ffb2c0;
+
+    z-index: 20000;
+}
+
+.final-screen.show {
+    display: flex;
+
+    animation: fadeIn 0.5s ease;
+}
+
+.final-content {
+    width: 92vw;
+    max-width: 900px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Top "I knew it!" */
+
+.final-content h2 {
+    margin: 0 0 45px;
+
+    color: #d71f52;
+
+    font-family: "Comic Sans MS", cursive;
+
+    font-size: clamp(2.5rem, 7vw, 4.8rem);
+
+    font-weight: bold;
+
+    line-height: 1.1;
+}
+
+.top-heart {
+    color: #ff3030;
+
+    font-family: Arial, sans-serif;
+
+    -webkit-text-stroke: 3px black;
+
+    margin-left: 8px;
+}
+
+
+/* =========================
+   FINAL CUTE CHARACTER
+========================= */
+
+.final-character {
+    width: 150px;
+    height: 185px;
+
+    position: relative;
+
+    margin-bottom: 35px;
+}
+
+.final-flower {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #777;
+
+    font-size: 28px;
+
+    z-index: 3;
+}
+
+.final-head {
+    position: absolute;
+
+    top: 28px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 105px;
+    height: 92px;
+
+    background: white;
+
+    border: 3px solid #777;
+
+    border-radius: 48% 48% 45% 45%;
+
+    z-index: 2;
+}
+
+.final-eye {
+    position: absolute;
+
+    top: 24px;
+
+    width: 29px;
+    height: 36px;
+
+    background: #51434a;
+
+    border-radius: 50%;
+}
+
+.final-eye::after {
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+    height: 11px;
+
+    top: 5px;
+    left: 6px;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+.final-eye-left {
+    left: 18px;
+}
+
+.final-eye-right {
+    right: 18px;
+}
+
+.final-blush {
+    position: absolute;
+
+    top: 59px;
+
+    width: 18px;
+    height: 8px;
+
+    background: #ffb5c2;
+
+    border-radius: 50%;
+}
+
+.final-blush-left {
+    left: 10px;
+}
+
+.final-blush-right {
+    right: 10px;
+}
+
+.final-mouth {
+    position: absolute;
+
+    left: 50%;
+    bottom: 9px;
+
+    transform: translateX(-50%);
+
+    color: #51434a;
+
+    font-size: 21px;
+}
+
+.final-body {
+    position: absolute;
+
+    top: 112px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 58px;
+    height: 58px;
+
+    background: #ff9bb0;
+
+    border: 3px solid #777;
+
+    border-radius: 45% 45% 50% 50%;
+
+    z-index: 1;
+}
+
+.final-heart {
+    color: white;
+
+    text-align: center;
+
+    font-size: 28px;
+
+    line-height: 52px;
+}
+
+.final-arm {
+    position: absolute;
+
+    top: 130px;
+
+    width: 38px;
+    height: 10px;
+
+    background: white;
+
+    border: 3px solid #777;
+
+    border-radius: 20px;
+}
+
+.final-arm-left {
+    left: 25px;
+
+    transform: rotate(28deg);
+}
+
+.final-arm-right {
+    right: 25px;
+
+    transform: rotate(-28deg);
+}
+
+
+/* =========================
+   ANNIVERSARY MESSAGE
+========================= */
+
+.anniversary {
+    color: #d71f52;
+
+    font-family:
+        "Comic Sans MS",
+        cursive;
+
+    font-size: clamp(1.6rem, 5vw, 3rem);
+
+    font-weight: bold;
+
+    line-height: 1.2;
+
+    text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.25);
+}
+
+.anniversary-heart {
+    color: #ff3030;
+
+    font-family: Arial, sans-serif;
+
+    -webkit-text-stroke: 2px black;
+
+    margin-left: 7px;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   PHONE
+========================= */
+
+@media (max-width: 480px) {
+
+    .card {
+        min-height: 470px;
+
+        padding-top: 38px;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    .no-btn {
+        min-width: 145px;
+    }
+
+    .final-content h2 {
+        margin-bottom: 35px;
+    }
+
+    .final-character {
+        margin-bottom: 25px;
+    }
+
+    .anniversary {
+        font-size: 1.65rem;
+    }
+}
